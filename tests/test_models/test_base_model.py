@@ -5,6 +5,9 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
 
+    def setUp(self):
+        pass
+
     def test_instance_construct_blank(self):
         """
         Tests instance construction with no args
@@ -19,7 +22,7 @@ class TestBaseModel(unittest.TestCase):
         """
         Tests instance construction with provided args
         """
-        timestamp = datetime.today()
+        timestamp = datetime.today().isoformat()  # converts to string
         custom_id = 75
         
         b = BaseModel(
@@ -29,6 +32,6 @@ class TestBaseModel(unittest.TestCase):
         )
 
         self.assertEqual(b.id, 75)
-        self.assertEqual(b.created_at, timestamp)
-        self.assertEqual(b.updated_at, timestamp)
+        self.assertEqual(b.created_at.isoformat(), timestamp)
+        self.assertEqual(b.updated_at.isoformat(), timestamp)
         

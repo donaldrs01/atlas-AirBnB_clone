@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import uuid
-import datetime
+from datetime import datetime
 
 class BaseModel:
     """
@@ -23,12 +23,13 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():  # iterates over key-value pairs
                 if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                    if isinstance(value, str):
+                        setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key != '__class__':  # avoid overriding class attribute
                     setattr(self, key, value)
         else:  # no provided values for id, created_at, updated_at
             self.id = str(uuid.uuid4())  # generate UUID
-            self.created_at = self.updated.at = datetime.now()  # initialize timestamps
+            self.created_at = self.updated_at = datetime.now()  # initialize timestamps
     
     def __str__(self):
         """
