@@ -5,8 +5,8 @@ import json
 
 class FileStorage:
     """
-    Serializes instances to a JSON file and deserializes JSON file to
-    instances
+    Serializes instances to a JSON file and deserializes JSON file
+    s into instances
 
     Private class attributes:
         __file_path (str) : path to the JSON file (ex: file.json)
@@ -27,12 +27,12 @@ class FileStorage:
 
     def all(self):
         """
-        Method that returns a dictionary containing all objects stored
-        in the __objects attribute
+        Method that returns a dictionary containing all objects
+        stored in the __objects attribute
 
         Returns:
-            dict: keys are in format <class name>.<id> and values are 
-            corresponding objects
+            dict: keys are in format <class name>.<id> and values
+            are corresponding objects
         """
         return self.__objects
 
@@ -40,3 +40,9 @@ class FileStorage:
         """
         Adds new object to __objects dictionary
         Uses the class name and object's ID as the key
+
+        Args:
+            obj: Object to be added  to __objects dictionary
+        """
+        key = f"({obj.__class__.__name__}.{obj.id}"  # constructs key with obj info
+        self.__objects[key] = obj  #  add obj to dictionary with correct key
