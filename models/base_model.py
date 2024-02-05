@@ -50,6 +50,7 @@ class BaseModel:
         """
         Updates attribute 'updated_at' with current datetime
         """
+        from . import storage  # import storage here to avoid circular import
         self.updated_at = datetime.now()
         storage.save()  #  add FileStorage saving mechanisms to instance
     
