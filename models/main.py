@@ -2,6 +2,6 @@
 
 from base_model import BaseModel
 
-testmodel = BaseModel(name="Test", description="This is a test.")
+testmodel = BaseModel(id = 34, description="This is a test.")
 print(testmodel)
 print(testmodel.to_dict())
