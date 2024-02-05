@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -27,14 +28,15 @@ class FileStorage:
 
     def all(self):
         """
-        Method that returns a dictionary containing all objects
+        Returns a dictionary containing all objects
         stored in the __objects attribute
 
         Returns:
             dict: keys are in format <class name>.<id> and values
             are corresponding objects
         """
-        return self.__objects
+        return FileStorage.__objects  # class attribute
+        #  shared dictionary across all instances of class
 
     def new(self, obj):
         """
@@ -45,4 +47,33 @@ class FileStorage:
             obj: Object to be added  to __objects dictionary
         """
         key = f"{obj.__class__.__name__}.{obj.id}"  # constructs key with obj info
-        self.__objects[key] = obj  #  add obj to dictionary with correct key
+        FileStorage.__objects[key] = obj  #  add obj to cls dictionary with correct key
+
+    def save(self):
+        """
+        Serializes dict pairs of objects 
+        and saves to .json files
+        """
+        serialized_objs = {}
+        for key, obj in FileStorage.__objects.items():  # iterate through pairs
+            serialized_objs[key] = obj.to_dict()  # serialize and store
+
+        with open(FileStorage.__file_path, 'w') as file:
+            json.dump(serialized_objs, file)  # saves as JSON file
+
+    def reload(self):
+        """
+        Reloads stored JSON representations
+        back into __obj dictionary
+        """
+        try:
+            with open(FileStorage.__file_path, 'r') as file:
+                loaded_objs = json.load(file)  # load JSON files into dict
+            for obj_id, obj in loaded_objs.items():
+                class_name = obj["__class__"]
+                if class_name == "BaseModel":
+                    obj = BaseModel(**obj)  # create BaseModel instance using kwargs
+                    FileStorage.__objects[obj_id] = obj  # store with original ID
+
+        except FileNotFoundError:
+            pass  # Do nothing if file doesn't exist
