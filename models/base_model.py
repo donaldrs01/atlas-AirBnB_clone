@@ -20,6 +20,7 @@ class BaseModel:
             created_at (datetime) : creation timestamp
             updated_at (datetime) : updated whenever changes made to obj
         """
+
         if kwargs:
             for key, value in kwargs.items():  # iterates over key-value pairs
                 if key == 'created_at' or key == 'updated_at':
