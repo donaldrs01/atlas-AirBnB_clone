@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import uuid
+import models
 from datetime import datetime
+
 
 class BaseModel:
     """
@@ -31,6 +33,7 @@ class BaseModel:
         else:  # no provided values for id, created_at, updated_at
             self.id = str(uuid.uuid4())  # generate UUID
             self.created_at = self.updated_at = datetime.now()  # initialize timestamps
+            models.storage.new(self)  # adds instance to FileStorage dict
     
     def __str__(self):
         """
@@ -47,6 +50,7 @@ class BaseModel:
         Updates attribute 'updated_at' with current datetime
         """
         self.updated_at = datetime.now()
+        storage.save()  #  add FileStorage saving mechanisms to instance
     
     def to_dict(self):
         """
