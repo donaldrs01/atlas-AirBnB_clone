@@ -9,9 +9,7 @@ class TestBaseModel(unittest.TestCase):
         pass
 
     def test_instance_construct_blank(self):
-        """
-        Tests instance construction with no args
-        """
+        """Tests instance construction with no args"""
         b = BaseModel()
         self.assertIsInstance(b, BaseModel)
         self.assertIsNotNone(b.id)
@@ -19,9 +17,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(b.updated_at)
 
     def test_instance_creation_with_args(self):
-        """
-        Tests instance construction with provided args
-        """
+        """Tests instance construction with provided args"""
         timestamp = datetime.today().isoformat()  # converts to string
         custom_id = 75
         
