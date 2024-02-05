@@ -44,5 +44,5 @@ class FileStorage:
         Args:
             obj: Object to be added  to __objects dictionary
         """
-        key = f"({obj.__class__.__name__}.{obj.id}"  # constructs key with obj info
+        key = f"{obj.__class__.__name__}.{obj.id}"  # constructs key with obj info
         self.__objects[key] = obj  #  add obj to dictionary with correct key
