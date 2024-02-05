@@ -16,9 +16,7 @@ class BaseModel:
         Attributes:
             id (str) : unique identifier number (assigned with uuid)
             created_at (datetime) : creation timestamp
-            updated_at (datetime) : updated whenever changes made to obj
-        """
-
+            updated_at (datetime) : updated whenever changes made to obj"""
         if kwargs:
             for key, value in kwargs.items():  # iterates over key-value pairs
                 if key == 'created_at' or key == 'updated_at':
@@ -39,9 +37,7 @@ class BaseModel:
         return f"[{class_name}] ({self.id}) {self.__dict__}"
     
     def save(self):
-        """
-        Updates attribute 'updated_at' with current datetime
-        """
+        """Updates attribute 'updated_at' with current datetime"""
         from . import storage  # import storage here to avoid circular import
         self.updated_at = datetime.now()
         storage.save()  #  add FileStorage saving mechanisms to instance
