@@ -10,6 +10,6 @@ class Amenity(BaseModel):
     Amenity class that inherits from BaseModel
 
     Public Class Attributes:
-        name (str) : name of amenity
+        name (str) : name of the amenity
     """
     name = ""
