@@ -11,7 +11,7 @@ class City(BaseModel):
 
     Public Class Attributes:
         state_id (str) : state.id to tie it to state
-        name (str) : name of city
+        name (str) : name of the city
     """
     state_id = ""
     name = ""
