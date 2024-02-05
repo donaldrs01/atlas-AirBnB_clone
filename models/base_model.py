@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+
 import uuid
+import models
 from datetime import datetime
 
 
@@ -14,7 +16,9 @@ class BaseModel:
         Attributes:
             id (str) : unique identifier number (assigned with uuid)
             created_at (datetime) : creation timestamp
-            updated_at (datetime) : updated whenever changes made to obj"""
+            updated_at (datetime) : updated whenever changes made to obj
+        """
+
         if kwargs:
             for key, value in kwargs.items():  # iterates over key-value pairs
                 if key == 'created_at' or key == 'updated_at':
@@ -25,6 +29,7 @@ class BaseModel:
         else:  # no provided values for id, created_at, updated_at
             self.id = str(uuid.uuid4())  # generate UUID
             self.created_at = self.updated_at = datetime.now()  # initialize timestamps
+            models.storage.new(self)  # adds instance to FileStorage dict
     
     def __str__(self):
         """Provides str representation of BaseModel instance
@@ -34,8 +39,12 @@ class BaseModel:
         return f"[{class_name}] ({self.id}) {self.__dict__}"
     
     def save(self):
-        """Updates attribute 'updated_at' with current datetime"""
+        """
+        Updates attribute 'updated_at' with current datetime
+        """
+        from . import storage  # import storage here to avoid circular import
         self.updated_at = datetime.now()
+        storage.save()  #  add FileStorage saving mechanisms to instance
     
     def to_dict(self):
         """Returns dict representation of BaseModel instance
