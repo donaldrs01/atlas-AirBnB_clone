@@ -143,11 +143,13 @@ class HBNBCommand(cmd.Cmd):
             if hasattr(instance, attribute_name):  # checks if name provided
                 attribute_type = type(getattr(instance, attribute_name))
                 if attribute_type == int:
-                    attribute_value = int(attribute_value)  # int type conversion
+                    #  int type conversion
+                    attribute_value = int(attribute_value)
                 elif attribute_type == float:
-                    attribute_value = float(attribute_value)  # float type conversion
-
-            setattr(instance, attribute_name, attribute_value)  # updates attribute value
+                    #  float type conversion
+                    attribute_value = float(attribute_value)
+            # updates attribute value
+            setattr(instance, attribute_name, attribute_value)
             storage.save()  # saves updated instance into JSON file
 
 
