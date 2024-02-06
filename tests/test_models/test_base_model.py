@@ -32,7 +32,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b.updated_at.isoformat(), timestamp)
 
     def test_save(self):
+        """Tests save functionality by comparing timestamps"""
         b = BaseModel()
         current_datetime = datetime.now()
         b.save()
         self.assertGreaterEqual(b.updated_at, current_datetime)
+
+    def test_to_dict(self):
+        """Tests converting instance into dictionary values"""
+        test = BaseModel()
+        test_dictionary = test.to_dict()
+        self.assertEqual(test_dictionary['__class__'], 'BaseModel')
+        self.assertEqual(test_dictionary['id'], test.id)
