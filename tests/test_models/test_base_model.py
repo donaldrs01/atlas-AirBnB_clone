@@ -30,4 +30,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b.id, 75)
         self.assertEqual(b.created_at.isoformat(), timestamp)
         self.assertEqual(b.updated_at.isoformat(), timestamp)
-        
+
+    def test_save(self):
+        b = BaseModel()
+        current_datetime = datetime.now()
+        b.save()
+        self.assertGreaterEqual(b.updated_at, current_datetime)
