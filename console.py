@@ -142,6 +142,7 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:  # raises error when key doesn't exist
             print("** no instance found **")
             return
+
         if (
             attribute_name != "id"
             and attribute_name != "created_at"
