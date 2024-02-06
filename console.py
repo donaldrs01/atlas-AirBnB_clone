@@ -84,11 +84,11 @@ class HBNBCommand(cmd.Cmd):
         class_name = args[0]
         instance_id = args[1]
 
-        class_exists = False
-        for key in storage.all().keys():
+        class_exists = False  # checks for class existence
+        for key in storage.all().keys():  # iterates through storage dict
             if class_name in key:
                 class_exists = True
-                break
+                break  # breaks if class exists
         if not class_exists:
             print("** class doesn't exist **")
             return
@@ -144,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
         class_name = args[0]
         instance_id = args[1]
         attribute_name = args[2]
-        attribute_value = args[4]
+        attribute_value = args[3]
 
         try:
             instance = storage.all()[class_name + "." + instance_id]
