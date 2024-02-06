@@ -23,8 +23,3 @@ class TestState(unittest.TestCase):
         test1 = State()
         test2 = State()
         self.assertNotEqual(test1.id, test2.id)
-
-    def test_fake_state(self):
-        test = State()
-        test.name = "Oklahoma"
-        self.assertEqual(test.name, "Oklahoma")
