@@ -6,6 +6,7 @@ import models
 from models.base_model import BaseModel
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand - basic command-line interpreter"""
     prompt = "(hbnb)"
