@@ -142,20 +142,6 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:  # raises error when key doesn't exist
             print("** no instance found **")
             return
-
-        if not args:
-            print("** class name missing **")
-            return
-        elif len(args) == 1:
-            print("** instance id missing **")
-            return
-        elif len(args) == 2:
-            print("** attribute name missing **")
-            return
-        elif len(args) == 3:
-            print("** value missing **")
-            return
-
         if (
             attribute_name != "id"
             and attribute_name != "created_at"
