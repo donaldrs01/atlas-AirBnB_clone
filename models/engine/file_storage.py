@@ -40,7 +40,7 @@ class FileStorage:
         FileStorage.__objects[key] = obj  # add obj to cls dict w/ correct key
 
     def save(self):
-        """Serializes dict pairs of objects 
+        """Serializes dict pairs of objects
             and saves to .json files"""
         serialized_objs = {}
         for key, obj in FileStorage.__objects.items():  # iterate thru pairs
