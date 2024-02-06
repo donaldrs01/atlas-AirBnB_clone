@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """Console module - entry point of command interpreter"""
 import cmd
-
+import json
+import models
+from models.base_model import BaseModel
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand - basic command-line interpreter"""
@@ -26,6 +29,22 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """method in Cmd class that handles no input"""
         pass  # Do nothing on empty line
+
+    def do_create(self, arg):
+        """Command that creates new instance of BaseModel, saves it to the
+            JSON, and prints the ID.
+        Args:
+            - name of class instance to create"""
+        if not arg:
+            print("** class name missing **")
+            return
+        try:
+            new_instance = eval(arg)()
+            new_instance.save()
+            print(new_instance.id)
+        except NameError:
+            print("** class doesn't exist **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
