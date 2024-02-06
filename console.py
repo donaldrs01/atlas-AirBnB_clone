@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Deletes nstance based on class name & id, saves change to JSON file
+        """Deletes instance based on class name & id, saves change to JSON file
         Args:
             - class name: name of class of instance
             - instance id: id of instance to delete"""
@@ -100,6 +100,55 @@ class HBNBCommand(cmd.Cmd):
         else:
             instances = [str(instance) for instance in storage.all().values()]
             print(instances)
+
+    def do_update(self, arg):
+        """Updates an instance based on class name and ID by adding/updating
+        attribute - changes then saved into JSON file
+        Args:
+            - class name: name of class of instance
+            - instance id : ID of instance to update
+            - attribute name : name of attribute to update
+            - attribute value : updated value for given attribute"""
+        args = arg.split()
+        class_name = args[0]
+        instance_id = args[1]
+        attribute_name = args[2]
+        attribute_value = args[3]
+
+        try:
+            instance = storage.all()[class_name + "." + instance_id]
+            # recreates dict key and retrieves instance to update
+        except KeyError:  # raises error when key doesn't exist
+            print("** no instance found **")
+            return
+
+        if not args:
+            print("** class name missing **")
+            return
+        elif len(args) == 1:
+            print("** instance id missing **")
+            return
+        elif len(args) == 2:
+            print("** attribute name missing **")
+            return
+        elif len(args) == 3:
+            print("** value missing **")
+            return
+
+        if (
+            attribute_name != "id"
+            and attribute_name != "created_at"
+            and attribute_name != "updated_at"
+        ):  # won't update ID or timestamp values
+            if hasattr(instance, attribute_name):  # checks if name provided
+                attribute_type = type(getattr(instance, attribute_name))
+                if attribute_type == int:
+                    attribute_value = int(attribute_value)  # int type conversion
+                elif attribute_type == float:
+                    attribute_value = float(attribute_value)  # float type conversion
+
+            setattr(instance, attribute_name, attribute_value)  # updates attribute value
+            storage.save()  # saves updated instance into JSON file
 
 
 if __name__ == "__main__":
