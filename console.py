@@ -179,6 +179,5 @@ class HBNBCommand(cmd.Cmd):
             setattr(instance, attribute_name, attribute_value)
             storage.save()  # saves updated instance into JSON file
 
-
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
