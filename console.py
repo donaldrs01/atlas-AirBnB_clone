@@ -115,20 +115,26 @@ class HBNBCommand(cmd.Cmd):
             - instance id : ID of instance to update
             - attribute name : name of attribute to update
             - attribute value : updated value for given attribute"""
+        #  args split into individual elements to allow for searching
         args = arg.split()
 
-        if len(args) < 3:
-            print(" ** insufficient arguments **")
+        if not args:
+            print("** class name missing **")
+            return
+        elif len(args) == 1:
+            print("** instance id missing **")
+            return
+        elif len(args) == 2:
+            print("** attribute name missing **")
+            return
+        elif len(args) == 3:
+            print("** value missing **")
             return
 
         class_name = args[0]
         instance_id = args[1]
         attribute_name = args[2]
-
-        if len(args) > 3:
-            attribute_value = args[3]
-        else:
-            attribute_value = None
+        attribute_value = args[4]
 
         try:
             instance = storage.all()[class_name + "." + instance_id]
