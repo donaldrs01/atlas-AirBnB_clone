@@ -1,6 +1,4 @@
-"""
-Unittest module for file_storage
-"""
+"""Unittest module for file_storage"""
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -9,16 +7,12 @@ from models.base_model import BaseModel
 class TestFileStorage(unittest.TestCase):
 
     def setUp(self):
-        """
-        Creates instance of FileStorage
-        """
+        """Creates instance of FileStorage"""
         self.instance = FileStorage()  # creates instance of FileStorage
 
     def test_new_method(self):
-        """
-        Test functionality of 'new' method that adds
-        object to dictionary
-        """
+        """Test functionality of 'new' method that adds
+            object to dictionary"""
         test = BaseModel()  # create instance of BaseModel
         self.instance.new(test)  # call 'new' to add to directory
 

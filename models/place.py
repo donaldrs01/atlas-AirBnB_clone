@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""
-Module for Place class
-"""
+"""Module for Place class"""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """
-    Place class that inherits from BaseModel
-
+    """Place class that inherits from BaseModel
     Public Class Attributes:
         city_id (str) : City.id
         user_id (str) : User.id
@@ -20,9 +16,7 @@ class Place(BaseModel):
         price_by_night (int) : the nightly price of place
         latitude (float) : the latitude of place
         longitude (float) : the longitude of place
-        amenity_ids (list) : a list of Amenity.ids
-    """
-
+        amenity_ids (list) : a list of Amenity.ids"""
     city_id = ""
     user_id = ""
     name = ""
