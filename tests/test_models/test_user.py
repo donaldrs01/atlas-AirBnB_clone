@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Unittests for User class
-"""
+"""Unittests for User class"""
 
 import unittest
 import models
@@ -11,9 +9,7 @@ from models.user import User
 class Test_User(unittest.TestCase):
 
     def test_user_attributes(self):
-        """
-        Unittests that test basic instantiation with various attributes
-        """
+        """Unittests that test basic instantiation with various attributes"""
         user = User()
 
         self.assertEqual(user.email, "")
