@@ -146,6 +146,15 @@ class HBNBCommand(cmd.Cmd):
         attribute_name = args[2]
         attribute_value = args[3]
 
+        class_exists = False
+        for key in storage.all().keys():  # check if class exists
+            if class_name in key:
+                class_exists = True
+                break
+        if not class_exists:
+            print("** class doesn't exist **")  # print error if no class
+            return
+
         try:
             instance = storage.all()[class_name + "." + instance_id]
             # recreates dict key and retrieves instance to update
