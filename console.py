@@ -83,6 +83,16 @@ class HBNBCommand(cmd.Cmd):
             return
         class_name = args[0]
         instance_id = args[1]
+
+        class_exists = False
+        for key in storage.all().keys():
+            if class_name in key:
+                class_exists = True
+                break
+        if not class_exists:
+            print("** class doesn't exist **")
+            return
+
         try:
             del storage.all()[f"{class_name}.{instance_id}"]
             storage.save()
