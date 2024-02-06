@@ -63,5 +63,25 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
 
+    def do_destroy(self, arg):
+        """Deletes nstance based on class name & id, saves change to JSON file
+        Args:
+            - class name: name of the class of the instance
+            - instance id: id of the instance to delete"""
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+        class_name = args[0]
+        instance_id = args[1]
+        try:
+            del storage.all()[f"{class_name}.{instance_id}"]
+            storage.save()
+        except KeyError:
+            print("** no instance found **")
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
