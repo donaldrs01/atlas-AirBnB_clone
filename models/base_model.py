@@ -26,8 +26,7 @@ class BaseModel:
                     setattr(self, key, value)
         else:  # no provided values for id, created_at, updated_at
             self.id = str(uuid.uuid4())  # generate UUID
-            self.created_at = self.updated_at = datetime.now()
-                # initialize timestamps
+            self.created_at = self.updated_at = datetime.now()  # init tmstmps
             models.storage.new(self)  # adds instance to FileStorage dict
 
     def __str__(self):
