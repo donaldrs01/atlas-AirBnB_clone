@@ -88,16 +88,19 @@ class HBNBCommand(cmd.Cmd):
         Args:
             - class name: name of the class to filter instances"""
         if arg:
-            try:
-                instances = [str(instance) for instance in
-                                storage.all().values() if
-                                    instance.__class__.__name__ == arg]
+            try:  # filter instances based on class name
+                instances = [
+                    str(instance)
+                    for instance in storage.all().values()
+                    if instance.__class__.__name__ == arg
+                ]
                 print(instances)
             except NameError:
                 print("** class doesn't exist **")
         else:
             instances = [str(instance) for instance in storage.all().values()]
             print(instances)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
