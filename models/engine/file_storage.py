@@ -8,6 +8,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class FileStorage:
     """Serializes instances to a JSON file and deserializes JSON
         files into instances
@@ -59,11 +60,22 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, 'r') as file:
                 loaded_objs = json.load(file)  # load JSON files into dict
-            for obj_id, obj in loaded_objs.items():
-                class_name = obj["__class__"]
-                if class_name == "BaseModel":
-                    obj = BaseModel(**obj)  # create BaseModel instc w/ kwargs
-                    FileStorage.__objects[obj_id] = obj  # store w/ original ID
+
+                # handle different subclasses
+                class_mapping = {
+                        "BaseModel": BaseModel,
+                        "Place": Place,
+                        "State": State,
+                        "City": City,
+                        "Amenity": Amenity,
+                        "Review": Review
+                }
+            for key, value in loaded_objs.items():
+                class_name = value.get("__class__")
+                if class_name in class_mapping:
+                    cls = class_mapping[class_name]
+                    obj = cls(**value)  # create instance of correct class
+                    FileStorage.__objects[key] = obj  # store w/ original ID
 
         except FileNotFoundError:
             pass  # Do nothing if file doesn't exist
