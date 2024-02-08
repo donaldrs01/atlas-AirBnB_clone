@@ -47,5 +47,5 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         b = BaseModel()
-        string_b = str(BaseModel)
+        string_b = str(b)
         self.assertIsInstance(string_b, str)
