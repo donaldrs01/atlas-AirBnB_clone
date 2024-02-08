@@ -5,7 +5,7 @@ test_model = BaseModel()
 test_model.name = "Test model"
 test_model.number = 40
 
-print("Original BaseModel Instnace:")
+print("Original BaseModel Instance:")
 print(test_model)
 
 test_model_json = test_model.to_dict()

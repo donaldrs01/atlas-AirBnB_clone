@@ -44,3 +44,7 @@ class TestBaseModel(unittest.TestCase):
         test_dictionary = test.to_dict()
         self.assertEqual(test_dictionary['__class__'], 'BaseModel')
         self.assertEqual(test_dictionary['id'], test.id)
+
+    def test_str(self):
+        b = BaseModel()
+        self.assertTrue(str(b))
