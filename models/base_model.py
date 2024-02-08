@@ -33,8 +33,9 @@ class BaseModel:
         """Provides str representation of BaseModel instance
         Returns:
             str: [<class name>] (<self.id>) <self.__dict__>"""
-        class_name = self.__class__.__name__  # retrieve class name
-        return f"[{class_name}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(
+            type(self).__name__, self.id, self.__dict__)
+
 
     def save(self):
         """Updates attribute 'updated_at' with current datetime"""
