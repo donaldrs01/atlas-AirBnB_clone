@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""File storage module doc"""
 import json
 import os
 from models.base_model import BaseModel
@@ -46,8 +47,7 @@ class FileStorage:
         FileStorage.__objects[key] = obj  # add obj to cls dict w/ correct key
 
     def save(self):
-        """Serializes dict pairs of objects
-            and saves to .json files"""
+        """Serializes dict pairs of objects and saves to .json files"""
         serialized_objs = {}
         for key, obj in FileStorage.__objects.items():  # iterate thru pairs
             serialized_objs[key] = obj.to_dict()  # serialize and store
@@ -56,8 +56,7 @@ class FileStorage:
             json.dump(serialized_objs, file)  # saves as JSON file
 
     def reload(self):
-        """Reloads stored JSON representations
-            back into __obj dictionary"""
+        """Reloads stored JSON representations back into __obj dictionary"""
         try:
             with open(self.__file_path, 'r') as file:
                 loaded_objs = json.load(file)  # load JSON files into dict
