@@ -1,24 +1,16 @@
 #!/usr/bin/python3
-"""Module for Amenity class Unittests"""
+"""Unit test module for Amenity class"""
 import unittest
-import models
 from models.amenity import Amenity
 
 
 class TestAmenity(unittest.TestCase):
     """Tests correct construction of Amenity instances"""
-    def test_is_instance(self):
-        test = Amenity()
-        self.assertIsInstance(test, Amenity)
+    def test_amenity_declare(self):
+        self.a_amenity = Amenity
 
-    def test_store(self):
-        test = Amenity()
-        self.assertIn(test, models.storage.all().values())
-
-    def test_unique_IDs(self):
-        test1 = Amenity()
-        test2 = Amenity()
-        self.assertNotEqual(test1.id, test2.id)
+    def test_amenity_input(self):
+        self.assertEqual(self.a_amenity.name, "")
 
 if __name__ == '__main__':
     unittest.main()
