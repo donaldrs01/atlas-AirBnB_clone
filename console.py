@@ -12,11 +12,6 @@ from models.amenity import Amenity
 from models.review import Review
 from models import storage
 
-class_list = {'State':models.state.State, 'City':models.city.City,
-            'Place':models.place.Place, 'Amenity':models.amenity.Amenity,
-            'Review':models.review.Review,
-            'BaseModel':models.base_model.BaseModel, 'User':models.user.User,}
-
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand - basic command-line interpreter"""
