@@ -5,7 +5,7 @@ from models.state import State
 
 
 class TestState(unittest.TestCase):
-    """Tests correct construction of City instances"""
+    """Tests correct construction of State instances"""
     def test_state_init_eq(self):
         """unittest test test class"""
         a_state = State()
