@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
-
+    """unittests for BaseModel"""
     def setUp(self):
         pass
 
@@ -47,4 +47,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         b = BaseModel()
-        self.assertIsInstance(b, str)
+        str_inst_res = str(b)
+        self.assertIsInstance(str_inst_res, str)
+
+if __name__ == '__main__':
+    unittest.main()
