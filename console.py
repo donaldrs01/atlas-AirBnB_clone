@@ -13,9 +13,9 @@ from models.review import Review
 from models import storage
 
 cls_lst = {'State': models.state.State, 'City': models.city.City,
-            'Place': models.place.Place, 'Amenity': models.amenity.Amenity,
-            'Review': models.review.Review, 'User': models.user.User,
-            'BaseModel': models.base_model.BaseModel}
+           'Place': models.place.Place, 'Amenity': models.amenity.Amenity,
+           'Review': models.review.Review, 'User': models.user.User,
+           'BaseModel': models.base_model.BaseModel}
 
 
 class HBNBCommand(cmd.Cmd):
