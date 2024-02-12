@@ -12,10 +12,10 @@ from models.amenity import Amenity
 from models.review import Review
 from models import storage
 
-class_list = {'State':models.state.State, 'City':models.city.City,
-            'Place':models.place.Place, 'Amenity':models.amenity.Amenity,
-            'Review':models.review.Review,
-            'BaseModel':models.base_model.BaseModel, 'User':models.user.User,}
+cls_lst = {'State': models.state.State, 'City': models.city.City,
+            'Place': models.place.Place, 'Amenity': models.amenity.Amenity,
+            'Review': models.review.Review, 'User': models.user.User,
+            'BaseModel': models.base_model.BaseModel}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-        if args[0] not in class_list:
+        if args[0] not in cls_lst:
             print("** class doesn't exist **")
             return
         class_name = args[0]
@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
         instances = storage.all().values()
         if arg:
             real_instances = [str(instance) for instance in instances
-                if instance.__class__.__name__ == arg]
+                                if instance.__class__.__name__ == arg]
             if real_instances:
                 print(real_instances)
             else:
