@@ -2,6 +2,13 @@
 """Console module - entry point of command interpreter"""
 import cmd
 import models
+import models.base_model
+import models.user
+import models.state
+import models.city
+import models.place
+import models.amenity
+import models.review
 from models import storage
 
 class_list = {'State':models.state.State, 'City':models.city.City,
