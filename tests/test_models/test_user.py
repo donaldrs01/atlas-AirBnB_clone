@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Unittests for User class"""
 import unittest
-import models
 from models.user import User
 
 
