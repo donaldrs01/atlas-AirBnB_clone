@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
         instances = storage.all().values()
         if arg:
             real_instances = [str(instance) for instance in instances
-                                if instance.__class__.__name__ == arg]
+                              if instance.__class__.__name__ == arg]
             if real_instances:
                 print(real_instances)
             else:
