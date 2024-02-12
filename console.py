@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 """Console module - entry point of command interpreter"""
 import cmd
-import json
 import models
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.place import Place
-from models.amenity import Amenity
-from models.review import Review
+import models.base_model
+import models.user
+import models.state
+import models.city
+import models.place
+import models.amenity
+import models.review
 from models import storage
+
+class_list = {'State':models.state.State, 'City':models.city.City,
+            'Place':models.place.Place, 'Amenity':models.amenity.Amenity,
+            'Review':models.review.Review,
+            'BaseModel':models.base_model.BaseModel, 'User':models.user.User,}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -60,6 +64,9 @@ class HBNBCommand(cmd.Cmd):
             return
         if len(args) == 1:
             print("** instance id missing **")
+            return
+        if args not in class_list:
+            print("** class doesn't exist **")
             return
         class_name = args[0]
         instance_id = args[1]
