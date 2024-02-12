@@ -36,7 +36,6 @@ class BaseModel:
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
-
     def save(self):
         """Updates attribute 'updated_at' with current datetime"""
         from . import storage  # import storage here to avoid circular import
