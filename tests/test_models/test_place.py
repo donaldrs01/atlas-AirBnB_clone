@@ -6,7 +6,7 @@ from models.place import Place
 
 class TestPlace(unittest.TestCase):
     """Tests correct construction of Place instances"""
-    def test_place_declare(self):
+    def test_place_declared(self):
         """unittest test test class"""
         a_place = Place()
         self.assertTrue(hasattr(a_place, 'city_id'))
