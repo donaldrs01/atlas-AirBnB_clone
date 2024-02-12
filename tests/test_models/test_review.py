@@ -6,11 +6,11 @@ from models.review import Review
 
 class TestReview(unittest.TestCase):
     """Tests correct construction of Review instances"""
-    def test_review_declare(self):
-        self.a_review = Review
-
-    def test_review_input(self):
-        self.assertEqual(self.a_review.name, "")
+    def test_review_init_eq(self):
+        """unittest test test class"""
+        a_review = Review()
+        self.assertTrue(hasattr(a_review, 'name'))
+        self.assertEqual(a_review.name, "")
 
 if __name__ == '__main__':
     unittest.main()
