@@ -7,10 +7,10 @@ from models.place import Place
 class TestPlace(unittest.TestCase):
     """Tests correct construction of Place instances"""
     def test_place_declare(self):
-        self.a_place = Place
-
-    def test_place_input(self):
-        self.assertEqual(self.a_place.name, "")
+        """unittest test test class"""
+        a_place = Place()
+        self.assertTrue(hasattr(a_place, 'city_id'))
+        self.assertTrue(hasattr(a_place, 'name'))
 
 if __name__ == '__main__':
     unittest.main()

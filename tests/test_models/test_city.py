@@ -5,12 +5,12 @@ from models.city import City
 
 
 class TestCity(unittest.TestCase):
-    """Tests correct construction of City instances"""
-    def test_city_declare(self):
-        self.a_city = City
-
-    def test_city_input(self):
-        self.assertEqual(self.a_city.name, "")
+    """Class test City"""
+    def test_city_work(self):
+        """unittest test test class"""
+        a_city = City()
+        self.assertTrue(hasattr(a_city, 'state_id'))
+        self.assertTrue(hasattr(a_city, 'name'))
 
 if __name__ == '__main__':
     unittest.main()
