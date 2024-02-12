@@ -9,8 +9,16 @@ class TestReview(unittest.TestCase):
     def test_review_init_eq(self):
         """unittest test test class"""
         a_review = Review()
-        self.assertTrue(hasattr(a_review, 'place_id'))
-        self.assertTrue(hasattr(a_review, 'user_id'))
+        self.assertIsInstance(a_review, Review)
+        self.assertTrue(hasattr(a_review, "place_id"))
+        self.assertTrue(hasattr(a_review, "user_id"))
+        self.assertTrue(hasattr(a_review, "text"))
+
+    def test_review_attributes(self):
+        a_review = Review()
+        self.assertEqual(a_review.place_id, "")
+        self.assertEqual(a_review.user_id, "")
+        self.assertEqual(a_review.text, "")
 
 if __name__ == '__main__':
     unittest.main()
