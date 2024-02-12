@@ -6,7 +6,7 @@ from models.user import User
 
 
 class Test_User(unittest.TestCase):
-
+    """unittests for user"""
     def test_user_attributes(self):
         """Unittests that test basic instantiation with various attributes"""
         user = User()
