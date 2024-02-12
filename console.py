@@ -111,19 +111,14 @@ class HBNBCommand(cmd.Cmd):
         """Prints all str rprsntns of all instances based or not on class name
         Args:
             - class name: name of the class to filter instances"""
-        if arg:
-            try:  # filter instances based on class name
-                instances = [
-                    str(instance)
-                    for instance in storage.all().values()
-                    if instance.__class__.__name__ == arg
-                ]
-                print(instances)
-            except NameError:
-                print("** class doesn't exist **")
-        else:
+        args = arg.split()
+        if len(args) == 0:
             instances = [str(instance) for instance in storage.all().values()]
             print(instances)
+        if len(args) == 1:
+            if args[0] not in class_list:
+                print("** class doesn't exist **")
+                return
 
     def do_update(self, arg):
         """Updates an instance based on class name and ID by adding/updating
