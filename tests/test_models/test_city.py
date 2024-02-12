@@ -11,6 +11,3 @@ class TestCity(unittest.TestCase):
         a_city = City()
         self.assertTrue(hasattr(a_city, 'state_id'))
         self.assertTrue(hasattr(a_city, 'name'))
-
-if __name__ == '__main__':
-    unittest.main()
