@@ -3,14 +3,16 @@
 import unittest
 from models.state import State
 
+my_model = State()
+
 
 class TestState(unittest.TestCase):
     """Tests correct construction of State instances"""
-    def test_state_declare(self):
-        self.a_state = State
-
-    def test_state_input(self):
-        self.assertEqual(self.a_state.name, "")
+    def test_state(self):
+        """unittest test test class"""
+        state = State()
+        self.assertTrue(hasattr(state, 'name'))
+        self.assertEqual(state.name, "")
 
 if __name__ == '__main__':
     unittest.main()
