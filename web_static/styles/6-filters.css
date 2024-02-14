@@ -26,18 +26,18 @@
 }
 
 .locations:hover .popover {
-    display: flex;
-    flex-direction: column;
-    left: 450px;
-    top:18.5%;
-    width:13.3%;
+    display:block;
+    position:absolute;
+    top: 20.5%;
+    left: 20.5%;
+    width: 14.5%;
 }
 
 .amenities:hover .popover {
-    display: flex;
-    flex-direction: column;
-    left: 740px;
-    top:18.5%;
+    display: block;
+    position:absolute;
+    top: 20.5%;
+    right: 675px;
 }
 
 .popover {
@@ -46,8 +46,7 @@
     width:auto;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    position: absolute;
-    top: 25%;
+    position: relative;
     list-style:none;
 }
 
