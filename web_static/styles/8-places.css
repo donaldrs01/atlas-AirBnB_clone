@@ -5,7 +5,7 @@
 
 .places h1 {
     font-size: 30px;
-    text-align: left;
+    position: relative;
 }
 
 .places article {
@@ -14,7 +14,7 @@
     margin:20px;
     border:1px solid #FF5A5F;
     border-radius: 4px;
-    display:inline-block;
+    display: inline-block;
     position:relative;
 }
 
@@ -23,6 +23,7 @@
     text-align: center;
     position:relative;
     top: 15px;
+    right: 20px;
     display:flex;
     justify-content: center;
 }
