@@ -28,15 +28,16 @@
 .locations:hover .popover {
     display: flex;
     flex-direction: column;
-    left: 270px;
-    top:23%;
+    left: 460px;
+    top:18.5%;
+    width:13%;
 }
 
 .amenities:hover .popover {
     display: flex;
     flex-direction: column;
-    left: 560px;
-    top:23%;
+    left: 750px;
+    top:18.5%;
 }
 
 .popover {
